@@ -12,7 +12,8 @@ val logging = Seq(
 
 val test = Seq(
   "org.scalactic" %% "scalactic" % "3.2.19" % Test withSources() withJavadoc(),
-  "org.scalatest" %% "scalatest" % "3.2.19" % Test withSources() withJavadoc()
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test withSources() withJavadoc(),
+  "org.scalamock" %% "scalamock" % "6.0.0" % Test withSources() withJavadoc()
 )
 
 lazy val root = (project in file("."))

@@ -24,6 +24,8 @@ object Main extends Logging {
   }
 }
 
+//TODO Finish all unit tests/ Craft README based on below/ submit to github
+
 
 //TODO Test cases for CmdLineInputSource
 //TODO Test case for InputProcessor
@@ -40,5 +42,13 @@ object Main extends Logging {
 
 //TODO Assuming the Discount rules are not cumulative i.e. 4 tins of soup in basket still means only one loaf at half-price
 //TODO Assume the shopping basket never gets too big and can therefore be aggregated and processed in memory
+//TODO Scalability a) Size of shopping basket as described below
+//TODO Number of products/discount - fast database implementation/caching
+//TODO Number of requests to price shopping baskets - horizontal scale (running many instances behind an API
+
 //TODO If the shopping basket is too large then switch to a streaming solution that aggregates immediately (I have
 // used fs2 successfully for this in the past (outside of a cluster/spark process)
+
+//TODO I made the distinction beween DiscountRule and Discount - A Dicount is the result of applying a DiscountRule - I
+// think this makes sense in terms of the design domain?
+
