@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 class GbpCurrencyFormatterSuite extends AnyFunSuite with Matchers {
 
-  private val formatter = new GbpCurrencyFormatter
+  private val formatter: CurrencyFormatter = new GbpCurrencyFormatter
 
   test("Correctly format an amount less than £1") {
     formatter.format(BigDecimal(99)) shouldBe "99p"
