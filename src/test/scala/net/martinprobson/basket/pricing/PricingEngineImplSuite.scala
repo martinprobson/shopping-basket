@@ -6,8 +6,6 @@ import org.scalamock.scalatest.MockFactory
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-//FIXME Make this into a paramaterized test suite?
-//FIXME Build another test suite that tests the pricing engine against actual discounts ?
 class PricingEngineImplSuite extends AnyFunSuite with Matchers with MockFactory {
 
   private val discountRuleRepository: DiscountRuleRepository = mock[DiscountRuleRepository]
