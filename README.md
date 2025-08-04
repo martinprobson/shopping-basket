@@ -126,7 +126,7 @@ The code has been split into packages according to functionality: -
 
 
 ## Scalability
-Scalability of this solution cover a number of different areas: -
+Scalability of this solution covers a number of different areas: -
 
 1. **Size of individual shopping basket** - The code assumes that an individual shopping never gets so large that it will not all fit into memory. If this is not the case, then some pre-aggregation step may be required.
 2. **Number of products/discounts** - Both of these entities come from the repository implementation. Performance here will be dependent on the underlying database implementation.
