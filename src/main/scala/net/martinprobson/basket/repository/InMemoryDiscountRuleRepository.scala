@@ -1,7 +1,6 @@
 package net.martinprobson.basket.repository
 
 import net.martinprobson.basket.domain.*
-import net.martinprobson.basket.domain.DiscountRule
 
 class InMemoryDiscountRuleRepository(productRepository: ProductRepository)
   extends DiscountRuleRepository {

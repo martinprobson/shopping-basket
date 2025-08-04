@@ -8,7 +8,11 @@ class GbpCurrencyFormatterSuite extends AnyFunSuite with Matchers {
   private val formatter: CurrencyFormatter = new GbpCurrencyFormatter
 
   test("Correctly format an amount less than £1") {
-    formatter.format(BigDecimal(99)) shouldBe "99p"
+    formatter.format(BigDecimal(1)) shouldBe "1p"
+  }
+
+  test("Correctly format an amount less than 1p") {
+    formatter.format(BigDecimal(0.1)) shouldBe "0p"
   }
 
   test("Correctly format an amount of zero") {

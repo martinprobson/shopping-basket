@@ -15,6 +15,7 @@ logs/*
 .bloop/
 .bsp/*
 .metals/*
+.vscode/*
 
 # eclipse conf file
 .settings

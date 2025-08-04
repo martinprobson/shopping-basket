@@ -3,6 +3,7 @@ package net.martinprobson.basket.domain
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+//FIXME Split this suite into PercentageDiscount and ConditionalDiscount suites
 class DiscountRuleSuite extends AnyFunSuite with Matchers {
 
   private val apples = Product("Apples", BigDecimal(1.00))

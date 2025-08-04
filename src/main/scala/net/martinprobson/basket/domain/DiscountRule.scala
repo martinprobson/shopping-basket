@@ -2,11 +2,25 @@ package net.martinprobson.basket.domain
 
 import net.martinprobson.basket.Logging
 
+/**
+ * Represents a discount rule that can be applied to a shopping basket
+ */
 sealed trait DiscountRule {
+  /**
+   * Apply a discount rule to a shopping basket
+   * @param items The shopping basket items - see [[Item]]
+   * @return Some(Discount) If the discount has been applied, otherwise None if this discount rule is not applicable
+   */
   def applyDiscount(items: Set[Item]): Option[Discount]
 
 }
 
+/**
+ * Represents a percentage discount rule, 20% off product A for example
+ * @param name The name of the discount rule
+ * @param product The [[Product]] the discount rule applies to
+ * @param percentage The percentage discount to apply
+ */
 case class PercentageDiscount(name: String, product: Product, percentage: Int)
   extends DiscountRule with Logging {
   override def applyDiscount(items: Set[Item]): Option[Discount] = {
@@ -23,6 +37,15 @@ case class PercentageDiscount(name: String, product: Product, percentage: Int)
   }
 }
 
+/**
+ * Represents a conditional discount. For example "20% off a product B if you buy 2 Product A's"
+ * @param name The name of the discount rule
+ * @param dependsOn The product the discount depends on
+ * @param dependsOnQty The quantity of depends on product that must be in the basket for the discount to be triggered
+ * @param targetProduct The target product to apply the discount to (if the dependsOn rules above are met)
+ * @param targetProductQty The number of target products to discount
+ * @param targetPercentage The percentage discount of the target product
+ */
 case class ConditionalDiscount(name: String,
                                dependsOn: Product,
                                dependsOnQty: Int,

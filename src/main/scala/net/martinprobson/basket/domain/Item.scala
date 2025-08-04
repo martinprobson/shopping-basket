@@ -1,9 +1,14 @@
 package net.martinprobson.basket.domain
 
+/**
+ * An aggregated shopping basket item.
+ * @param product The [[Product]]
+ * @param qty Qty of product in the basket
+ */
 case class Item (product: Product, qty: Int) {
 
   /**
-   * Two Items are considered equal if they contain the same {@link Product}
+   * Two Items are considered equal if they contain the same [[Product]]
    * @param obj The other object we are comparing
    * @return true if equal, false otherwise
    */

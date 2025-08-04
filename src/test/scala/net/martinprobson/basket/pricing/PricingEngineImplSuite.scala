@@ -6,6 +6,8 @@ import org.scalamock.scalatest.MockFactory
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+//FIXME Make this into a paramaterized test suite?
+//FIXME Build another test suite that tests the pricing engine against actual discounts ?
 class PricingEngineImplSuite extends AnyFunSuite with Matchers with MockFactory {
 
   private val discountRuleRepository: DiscountRuleRepository = mock[DiscountRuleRepository]
@@ -29,7 +31,8 @@ class PricingEngineImplSuite extends AnyFunSuite with Matchers with MockFactory 
     (() => discountRuleRepository.getAll).expects().returning(List(discountRule))
 
     val items = Set(Item(apples, 2), Item(bread, 1))
-    val expected = PriceBasketResult(BigDecimal(2.80), List(Discount("Apples 10% off", BigDecimal(0.20))), BigDecimal(2.60))
+    val expected = PriceBasketResult(BigDecimal(2.80),
+      List(Discount("Apples 10% off", BigDecimal(0.20))), BigDecimal(2.60))
     pricingEngine.priceBasket(items) shouldBe Right(expected)
   }
 
@@ -41,7 +44,8 @@ class PricingEngineImplSuite extends AnyFunSuite with Matchers with MockFactory 
     (() => discountRuleRepository.getAll).expects().returning(List(discountRule1, discountRule2))
 
     val items = Set(Item(apples, 2), Item(bread, 1))
-    val expected = PriceBasketResult(BigDecimal(2.80), List(Discount("Apples 10% off", BigDecimal(0.20)), Discount("Bread 50% off", BigDecimal(0.40))), BigDecimal(2.20))
+    val expected = PriceBasketResult(BigDecimal(2.80),
+      List(Discount("Apples 10% off", BigDecimal(0.20)), Discount("Bread 50% off", BigDecimal(0.40))), BigDecimal(2.20))
     pricingEngine.priceBasket(items) shouldBe Right(expected)
   }
 

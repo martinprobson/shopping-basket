@@ -43,7 +43,8 @@ class InputProcessorImplSuite extends AnyFunSuite with Matchers with MockFactory
     (productRepository.get _).expects("Milk").returning(None)
 
     val input = List("Apples", "Cheese", "Milk")
-    val expected = Left(List(InvalidProductError("Invalid product: 'Cheese'"), InvalidProductError("Invalid product: 'Milk'")))
+    val expected = Left(List(InvalidProductError("Invalid product: 'Cheese'"),
+      InvalidProductError("Invalid product: 'Milk'")))
     inputProcessor.process(input) shouldBe expected
   }
 }
