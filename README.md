@@ -130,7 +130,9 @@ Scalability of this solution covers a number of different areas: -
 
 1. **Size of individual shopping basket** - The code assumes that an individual shopping never gets so large that it will not all fit into memory. If this is not the case, then some pre-aggregation step may be required.
 2. **Number of products/discounts** - Both of these entities come from the repository implementation. Performance here will be dependent on the underlying database implementation.
-3. **Number of requests to process a shopping basket** - This can be made horizontally scalable (by putting the pricing engine implementation behind a http endpoint and running via k8s or a load balancer for example). 
+3. **Number of requests to process a shopping basket** - This can be made horizontally scalable (by putting the pricing engine implementation behind a http endpoint and running via k8s or a load balancer for example).
+
+I'm happy to discuss all the options above in more detail if required.
 
 ## Dependency Injection
 To keep things simple, I have wired up the dependencies manually in the code (via the companion object of each trait). For real code I would probably replace this with
