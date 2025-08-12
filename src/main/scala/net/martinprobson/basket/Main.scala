@@ -27,18 +27,5 @@ object Main extends Logging {
   }
 }
 
-//TODO Finish all unit tests/ Craft README based on below/ submit to github
-
-
-
-//TODO Describe Domain model in README
-
-
-//TODO Scalability a) Size of shopping basket as described below
-//TODO Number of products/discount - fast database implementation/caching
-//TODO Number of requests to price shopping baskets - horizontal scale (running many instances behind an API
-
-//TODO If the shopping basket is too large then switch to a streaming solution that aggregates immediately (I have
-// used fs2 successfully for this in the past (outside of a cluster/spark process)
 
 
