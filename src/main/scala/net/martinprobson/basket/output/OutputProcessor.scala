@@ -1,9 +1,10 @@
 package net.martinprobson.basket.output
 
-import net.martinprobson.basket.domain.PriceBasketResult
+import net.martinprobson.basket.domain.{PriceBasketResult, Error}
+import cats.effect.IO
 
 trait OutputProcessor {
-  def formatOutput(result: PriceBasketResult): Either[List[Error], String]
+  def formatOutput(result: PriceBasketResult): IO[Either[List[Error], String]]
 }
 
 object OutputProcessor {

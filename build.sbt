@@ -1,7 +1,6 @@
-
-ThisBuild / scalaVersion     := "3.3.6"
-ThisBuild / version          := "0.0.1-SNAPSHOT"
-ThisBuild / organization     := "net.martinprobson"
+ThisBuild / scalaVersion := "3.3.6"
+ThisBuild / version := "0.0.1-SNAPSHOT"
+ThisBuild / organization := "net.martinprobson"
 
 val logging = Seq(
   "org.slf4j" % "slf4j-api" % "2.0.17",
@@ -11,27 +10,31 @@ val logging = Seq(
 )
 
 val test = Seq(
-  "org.scalactic" %% "scalactic" % "3.2.19" % Test withSources() withJavadoc(),
-  "org.scalatest" %% "scalatest" % "3.2.19" % Test withSources() withJavadoc(),
-  "org.scalamock" %% "scalamock" % "6.0.0" % Test withSources() withJavadoc()
+  "org.scalactic" %% "scalactic" % "3.2.19" % Test withSources () withJavadoc (),
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test withSources () withJavadoc (),
+  "org.scalamock" %% "scalamock" % "6.0.0" % Test withSources () withJavadoc ()
 )
+
+val catsEffectVersion = "3.6.3"
+
+val catseffect = Seq("org.typelevel" %% "cats-effect" % catsEffectVersion withSources () withJavadoc ())
 
 lazy val root = (project in file("."))
-  .settings( name := "shopping-basket" )
-  .settings( libraryDependencies ++= logging,
-    libraryDependencies ++=  test
-  )
+  .settings(name := "shopping-basket")
+  .settings(libraryDependencies ++= logging, libraryDependencies ++= catseffect, libraryDependencies ++= test)
 
 scalacOptions ++= Seq(
-  "-deprecation",     // Emit warning and location for usages of deprecated APIs.
-  "-explaintypes",    // Explain type errors in more detail.
+  "-deprecation", // Emit warning and location for usages of deprecated APIs.
+  "-explaintypes", // Explain type errors in more detail.
   "-Xfatal-warnings" // Fail the compilation if there are any warnings.
 )
+
+Compile / run / fork := true
 
 javacOptions ++= Seq("-source", "17", "-target", "17", "-Xlint")
 
 assembly / assemblyMergeStrategy := {
-  case PathList("META-INF", "MANIFEST.MF")       => MergeStrategy.discard
+  case PathList("META-INF", "MANIFEST.MF") => MergeStrategy.discard
   case n if n.startsWith("reference.conf") => MergeStrategy.concat
   case _                                   => MergeStrategy.first
 }

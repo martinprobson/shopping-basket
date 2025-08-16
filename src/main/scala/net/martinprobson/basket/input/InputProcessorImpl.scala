@@ -1,11 +1,12 @@
 package net.martinprobson.basket.input
 
+import cats.effect.IO
 import net.martinprobson.basket.domain.*
 import net.martinprobson.basket.repository.ProductRepository
 
 class InputProcessorImpl(val productRepository: ProductRepository) extends InputProcessor {
 
-  override def process(input: List[String]): Either[List[Error], Set[Item]] = {
+  override def process(input: List[String]): IO[Either[List[Error], Set[Item]]] = IO {
     // 1. Partition the input list into valid and invalid items.
     val validatedItems: List[Either[Error, Product]] = input.map { name =>
       productRepository.get(name) match {
