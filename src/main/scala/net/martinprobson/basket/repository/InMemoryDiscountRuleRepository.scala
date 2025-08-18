@@ -1,8 +1,9 @@
 package net.martinprobson.basket.repository
 
+import cats.effect.IO
 import net.martinprobson.basket.domain.*
 
-class InMemoryDiscountRuleRepository(productRepository: ProductRepository)
+case class InMemoryDiscountRuleRepository(productRepository: ProductRepository)
   extends DiscountRuleRepository {
 
   private val discounts: List[DiscountRule] =
@@ -13,4 +14,10 @@ class InMemoryDiscountRuleRepository(productRepository: ProductRepository)
 
 
   override def getAll: List[DiscountRule] = discounts
+}
+
+object InMemoryDiscountRuleRepository {
+  def apply(productRepository: ProductRepository): IO[DiscountRuleRepository] =
+    IO(new InMemoryDiscountRuleRepository(productRepository))
+  
 }

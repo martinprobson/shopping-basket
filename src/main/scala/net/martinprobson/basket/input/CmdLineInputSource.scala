@@ -16,3 +16,9 @@ class CmdLineInputSource(val args: Array[String]) extends InputSource with Loggi
     }
   }
 }
+/**
+ * Wire up our CmdLineInputSource
+ */
+object CmdLineInputSource {
+  def apply(args: Array[String]): IO[InputSource] = IO(new CmdLineInputSource(args))
+}

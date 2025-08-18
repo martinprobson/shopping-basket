@@ -7,6 +7,3 @@ trait OutputProcessor {
   def formatOutput(result: PriceBasketResult): IO[Either[List[Error], String]]
 }
 
-object OutputProcessor {
-  def apply(): OutputProcessor = new OutputProcessorImpl(GbpCurrencyFormatter())
-}

@@ -41,3 +41,7 @@ class InputProcessorImpl(val productRepository: ProductRepository) extends Input
     }
   }
 }
+
+object InputProcessorImpl {
+  def apply(productRepository: ProductRepository): IO[InputProcessor] = IO(new InputProcessorImpl(productRepository))
+}

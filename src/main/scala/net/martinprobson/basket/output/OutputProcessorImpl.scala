@@ -20,3 +20,8 @@ class OutputProcessorImpl(val currencyFormatter: CurrencyFormatter) extends Outp
     Right(sb.toString())
   }
 }
+
+object OutputProcessorImpl {
+  def apply(currencyFormatter: CurrencyFormatter): IO[OutputProcessor] =
+    IO(new OutputProcessorImpl(currencyFormatter))
+}

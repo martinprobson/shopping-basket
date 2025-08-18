@@ -34,3 +34,10 @@ class PricingEngineImpl(discountRuleRepository: DiscountRuleRepository) extends 
     Right(PriceBasketResult(subTotal, discounts, totalPrice))
   }
 }
+
+object PricingEngineImpl {
+
+  def apply(discountRuleRepository: DiscountRuleRepository): IO[PricingEngine] = IO {
+    new PricingEngineImpl(discountRuleRepository)
+  }
+}

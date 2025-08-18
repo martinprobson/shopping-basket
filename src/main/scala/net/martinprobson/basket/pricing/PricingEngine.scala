@@ -8,6 +8,3 @@ trait PricingEngine {
   def priceBasket(items: Set[Item]): IO[Either[List[Error], PriceBasketResult]]
 }
 
-object PricingEngine {
-  def apply(): PricingEngine = PricingEngineImpl(DiscountRuleRepository())
-}

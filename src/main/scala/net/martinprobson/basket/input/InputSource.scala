@@ -10,10 +10,3 @@ import net.martinprobson.basket.input.CmdLineInputSource
 trait InputSource {
   def getInput: IO[Either[List[Error], List[String]]]
 }
-
-/**
- * Wire up our CmdLineInputSource
- */
-object InputSource {
-  def apply(args: Array[String]): InputSource = new CmdLineInputSource(args)
-}

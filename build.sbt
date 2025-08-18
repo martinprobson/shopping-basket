@@ -12,7 +12,9 @@ val logging = Seq(
 val test = Seq(
   "org.scalactic" %% "scalactic" % "3.2.19" % Test withSources () withJavadoc (),
   "org.scalatest" %% "scalatest" % "3.2.19" % Test withSources () withJavadoc (),
-  "org.scalamock" %% "scalamock" % "6.0.0" % Test withSources () withJavadoc ()
+  "org.scalamock" %% "scalamock" % "7.4.1" % Test withSources () withJavadoc (),
+  "com.disneystreaming" %% "weaver-cats" % "0.8.4" % Test withSources() withJavadoc(),
+  "com.disneystreaming" %% "weaver-scalacheck" % "0.8.4" % Test withSources() withJavadoc()
 )
 
 val catsEffectVersion = "3.6.3"
@@ -30,6 +32,8 @@ scalacOptions ++= Seq(
 )
 
 Compile / run / fork := true
+
+testFrameworks += new TestFramework("weaver.framework.CatsEffect")
 
 javacOptions ++= Seq("-source", "17", "-target", "17", "-Xlint")
 
