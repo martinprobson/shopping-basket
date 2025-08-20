@@ -1,8 +1,9 @@
 package net.martinprobson.basket.pricing
 
-import net.martinprobson.basket.domain.{Discount, PriceBasketResult}
+import net.martinprobson.basket.domain.{Discount, Item, PriceBasketResult}
 import net.martinprobson.basket.input.InputProcessor
 import net.martinprobson.basket.output.OutputProcessor
+import net.martinprobson.basket.repository.InMemoryProductRepository
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.prop.TableDrivenPropertyChecks.*

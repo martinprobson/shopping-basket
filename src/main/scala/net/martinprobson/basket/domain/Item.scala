@@ -1,7 +1,13 @@
 package net.martinprobson.basket.domain
 
+import cats.effect.IO
+import org.http4s.circe.{jsonEncoderOf, jsonOf}
+import org.http4s.{EntityDecoder, EntityEncoder}
+import io.circe.generic.auto.*
+
 /**
  * An aggregated shopping basket item.
+ *
  * @param product The [[Product]]
  * @param qty Qty of product in the basket
  */
@@ -28,3 +34,4 @@ case class Item (product: Product, qty: Int) {
     product.hashCode
   }
 }
+
