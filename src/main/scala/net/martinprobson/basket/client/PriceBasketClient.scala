@@ -53,5 +53,5 @@ object PriceBasketClient extends IOApp.Simple {
       .use(client => priceBasketClient(client, source))
   }
 
-  override def run: IO[Unit] = program(RandomSource(100, 1).stream)
+  override def run: IO[Unit] = program(RandomSource(10, 10).stream)
 }
